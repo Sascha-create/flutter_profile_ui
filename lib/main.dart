@@ -1,6 +1,8 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:miniprofile/information_item.dart';
+import 'package:miniprofile/user_information_card.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -106,120 +108,35 @@ class _ProfileState extends State<Profile> {
                                       color: Colors.grey[300],
                                     ),
                                     InformationItem(
-                                        icon: Icon(
-                                            color: Colors.blue,
-                                            size: 32,
-                                            Icons.home),
+                                        iconData: Icons.home,
+                                        iconColor: Colors.blue,
                                         title: "Guild",
                                         details: "Fairytail, Magnolia"),
                                     SizedBox(
                                       height: 20.0,
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Icon(
-                                          Icons.auto_awesome,
-                                          color: Colors.yellowAccent[400],
-                                          size: 35,
-                                        ),
-                                        SizedBox(
-                                          width: 20.0,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Magic",
-                                              style: TextStyle(
-                                                fontSize: 15.0,
-                                              ),
-                                            ),
-                                            Text(
-                                              "Spatial & Sword Magic, Telekinesis",
-                                              style: TextStyle(
-                                                fontSize: 12.0,
-                                                color: Colors.grey[400],
-                                              ),
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    ),
+                                    InformationItem(
+                                        iconData: Icons.auto_awesome,
+                                        iconColor: Colors.yellowAccent[400],
+                                        title: "Magic",
+                                        details:
+                                            "Spatial & Sword Magic, Telekinesis"),
                                     SizedBox(
                                       height: 20.0,
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Icon(
-                                          Icons.favorite,
-                                          color: Colors.pinkAccent[400],
-                                          size: 35,
-                                        ),
-                                        SizedBox(
-                                          width: 20.0,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Loves",
-                                              style: TextStyle(
-                                                fontSize: 15.0,
-                                              ),
-                                            ),
-                                            Text(
-                                              "Eating cakes",
-                                              style: TextStyle(
-                                                fontSize: 12.0,
-                                                color: Colors.grey[400],
-                                              ),
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    ),
+                                    InformationItem(
+                                        iconData: Icons.favorite,
+                                        iconColor: Colors.pinkAccent[400],
+                                        title: "Loves",
+                                        details: "Eating Cakes"),
                                     SizedBox(
                                       height: 20.0,
                                     ),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      children: [
-                                        Icon(
-                                          Icons.people,
-                                          color: Colors.lightGreen[400],
-                                          size: 35,
-                                        ),
-                                        SizedBox(
-                                          width: 20.0,
-                                        ),
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              "Team",
-                                              style: TextStyle(
-                                                fontSize: 15.0,
-                                              ),
-                                            ),
-                                            Text(
-                                              "Team Natsu",
-                                              style: TextStyle(
-                                                fontSize: 12.0,
-                                                color: Colors.grey[400],
-                                              ),
-                                            )
-                                          ],
-                                        )
-                                      ],
-                                    ),
+                                    InformationItem(
+                                        iconData: Icons.people,
+                                        iconColor: Colors.lightGreen[400],
+                                        title: "Team",
+                                        details: "Team Natsu"),
                                   ],
                                 ),
                               )))),
@@ -238,137 +155,6 @@ class _ProfileState extends State<Profile> {
               ))
         ],
       ),
-    );
-  }
-}
-
-class UserInformationCard extends StatelessWidget {
-  const UserInformationCard({
-    super.key,
-    required this.counter,
-    required this.birthday,
-    required this.age,
-  });
-
-  final int counter;
-  final String birthday;
-  final int age;
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-        child: Padding(
-      padding: EdgeInsets.all(16.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Container(
-              child: Column(
-            children: [
-              UserInformationHeader(
-                title: "Battles",
-              ),
-              Text(
-                "$counter",
-                style: TextStyle(
-                  fontSize: 15.0,
-                ),
-              )
-            ],
-          )),
-          Container(
-            child: Column(children: [
-              UserInformationHeader(title: "Birthday"),
-              Text(
-                birthday,
-                style: TextStyle(
-                  fontSize: 15.0,
-                ),
-              )
-            ]),
-          ),
-          Container(
-              child: Column(
-            children: [
-              UserInformationHeader(title: "Age"),
-              Text(
-                '$age yrs',
-                style: TextStyle(
-                  fontSize: 15.0,
-                ),
-              )
-            ],
-          )),
-        ],
-      ),
-    ));
-  }
-}
-
-class UserInformationHeader extends StatelessWidget {
-  const UserInformationHeader({
-    super.key,
-    required this.title,
-  });
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Text(
-          title,
-          style: TextStyle(color: Colors.grey[400], fontSize: 14.0),
-        ),
-        SizedBox(
-          height: 5.0,
-        ),
-      ],
-    );
-  }
-}
-
-class InformationItem extends StatelessWidget {
-  const InformationItem({
-    super.key,
-    required this.icon,
-    required this.title,
-    required this.details,
-  });
-
-  final Icon icon;
-  final String title;
-  final String details;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        icon,
-        SizedBox(
-          width: 20.0,
-        ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              title,
-              style: TextStyle(
-                fontSize: 15.0,
-              ),
-            ),
-            Text(
-              details,
-              style: TextStyle(
-                fontSize: 12.0,
-                color: Colors.grey[400],
-              ),
-            )
-          ],
-        )
-      ],
     );
   }
 }
