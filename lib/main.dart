@@ -231,7 +231,11 @@ class _ProfileState extends State<Profile> {
               top: MediaQuery.of(context).size.height * 0.45,
               left: 20.0,
               right: 20.0,
-              child: UserInformationCard(counter: counter))
+              child: UserInformationCard(
+                counter: counter,
+                birthday: "April 7th",
+                age: 19,
+              ))
         ],
       ),
     );
@@ -242,9 +246,13 @@ class UserInformationCard extends StatelessWidget {
   const UserInformationCard({
     super.key,
     required this.counter,
+    required this.birthday,
+    required this.age,
   });
 
   final int counter;
+  final String birthday;
+  final int age;
 
   @override
   Widget build(BuildContext context) {
@@ -259,8 +267,7 @@ class UserInformationCard extends StatelessWidget {
             children: [
               Text(
                 'Battles',
-                style: TextStyle(
-                    color: Colors.grey[400], fontSize: 14.0),
+                style: TextStyle(color: Colors.grey[400], fontSize: 14.0),
               ),
               SizedBox(
                 height: 5.0,
@@ -277,14 +284,13 @@ class UserInformationCard extends StatelessWidget {
             child: Column(children: [
               Text(
                 'Birthday',
-                style: TextStyle(
-                    color: Colors.grey[400], fontSize: 14.0),
+                style: TextStyle(color: Colors.grey[400], fontSize: 14.0),
               ),
               SizedBox(
                 height: 5.0,
               ),
               Text(
-                'April 7th',
+                birthday,
                 style: TextStyle(
                   fontSize: 15.0,
                 ),
@@ -296,14 +302,13 @@ class UserInformationCard extends StatelessWidget {
             children: [
               Text(
                 'Age',
-                style: TextStyle(
-                    color: Colors.grey[400], fontSize: 14.0),
+                style: TextStyle(color: Colors.grey[400], fontSize: 14.0),
               ),
               SizedBox(
                 height: 5.0,
               ),
               Text(
-                '19 yrs',
+                '$age yrs',
                 style: TextStyle(
                   fontSize: 15.0,
                 ),
