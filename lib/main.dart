@@ -265,12 +265,8 @@ class UserInformationCard extends StatelessWidget {
           Container(
               child: Column(
             children: [
-              Text(
-                'Battles',
-                style: TextStyle(color: Colors.grey[400], fontSize: 14.0),
-              ),
-              SizedBox(
-                height: 5.0,
+              UserInformationHeader(
+                title: "Battles",
               ),
               Text(
                 "$counter",
@@ -282,13 +278,7 @@ class UserInformationCard extends StatelessWidget {
           )),
           Container(
             child: Column(children: [
-              Text(
-                'Birthday',
-                style: TextStyle(color: Colors.grey[400], fontSize: 14.0),
-              ),
-              SizedBox(
-                height: 5.0,
-              ),
+              UserInformationHeader(title: "Birthday"),
               Text(
                 birthday,
                 style: TextStyle(
@@ -300,13 +290,7 @@ class UserInformationCard extends StatelessWidget {
           Container(
               child: Column(
             children: [
-              Text(
-                'Age',
-                style: TextStyle(color: Colors.grey[400], fontSize: 14.0),
-              ),
-              SizedBox(
-                height: 5.0,
-              ),
+              UserInformationHeader(title: "Age"),
               Text(
                 '$age yrs',
                 style: TextStyle(
@@ -318,6 +302,30 @@ class UserInformationCard extends StatelessWidget {
         ],
       ),
     ));
+  }
+}
+
+class UserInformationHeader extends StatelessWidget {
+  const UserInformationHeader({
+    super.key,
+    required this.title,
+  });
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          title,
+          style: TextStyle(color: Colors.grey[400], fontSize: 14.0),
+        ),
+        SizedBox(
+          height: 5.0,
+        ),
+      ],
+    );
   }
 }
 
