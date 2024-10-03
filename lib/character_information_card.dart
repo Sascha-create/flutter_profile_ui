@@ -2,9 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-
-class UserInformationCard extends StatelessWidget {
-  const UserInformationCard({
+class CharacterInformationCard extends StatelessWidget {
+  const CharacterInformationCard({
     super.key,
     required this.counter,
     required this.birthday,
@@ -26,7 +25,7 @@ class UserInformationCard extends StatelessWidget {
           Container(
               child: Column(
             children: [
-              UserInformationHeader(
+              CharacterInformationHeader(
                 title: "Battles",
               ),
               Text(
@@ -39,7 +38,7 @@ class UserInformationCard extends StatelessWidget {
           )),
           Container(
             child: Column(children: [
-              UserInformationHeader(title: "Birthday"),
+              CharacterInformationHeader(title: "Birthday"),
               Text(
                 birthday,
                 style: TextStyle(
@@ -51,7 +50,7 @@ class UserInformationCard extends StatelessWidget {
           Container(
               child: Column(
             children: [
-              UserInformationHeader(title: "Age"),
+              CharacterInformationHeader(title: "Age"),
               Text(
                 '$age yrs',
                 style: TextStyle(
@@ -66,8 +65,8 @@ class UserInformationCard extends StatelessWidget {
   }
 }
 
-class UserInformationHeader extends StatelessWidget {
-  const UserInformationHeader({
+class CharacterInformationHeader extends StatelessWidget {
+  const CharacterInformationHeader({
     super.key,
     required this.title,
   });

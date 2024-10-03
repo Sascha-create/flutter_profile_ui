@@ -1,23 +1,59 @@
 //import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:miniprofile/character.dart';
+import 'package:miniprofile/information_card_widget.dart';
 import 'package:miniprofile/information_item.dart';
-import 'package:miniprofile/user_information_card.dart';
+import 'package:miniprofile/character_information_card.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: Profile(),
+    home: AppHome(),
     theme: ThemeData(fontFamily: 'Poppins'),
   ));
 }
 
+class AppHome extends StatefulWidget {
+  const AppHome({super.key});
+
+  @override
+  State<AppHome> createState() => _AppHomeState();
+}
+
+class _AppHomeState extends State<AppHome> {
+  int currentIndex = 0;
+  final List<Character> character = [erza, lucy];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      bottomNavigationBar: NavigationBar(
+          indicatorColor: Colors.deepPurpleAccent,
+          selectedIndex: currentIndex,
+          onDestinationSelected: (int index) {
+            currentIndex = index;
+            setState(() {});
+          },
+          destinations: const [
+            NavigationDestination(
+                icon: Icon(Icons.arrow_back), label: "zurück"),
+            NavigationDestination(
+                icon: Icon(Icons.arrow_forward), label: "nächste"),
+          ]),
+      body: Profile(),
+    );
+  }
+}
+
 class Profile extends StatefulWidget {
+  
   @override
   _ProfileState createState() => _ProfileState();
 }
 
 class _ProfileState extends State<Profile> {
   int counter = 0;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,13 +94,13 @@ class _ProfileState extends State<Profile> {
                     ),
                     CircleAvatar(
                       radius: 65.0,
-                      backgroundImage: AssetImage('assets/erza.jpg'),
+                      backgroundImage: erza.image,
                       backgroundColor: Colors.white,
                     ),
                     SizedBox(
                       height: 10.0,
                     ),
-                    Text('Erza Scarlet',
+                    Text(erza.name,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -73,7 +109,7 @@ class _ProfileState extends State<Profile> {
                       height: 10.0,
                     ),
                     Text(
-                      'S Class Mage',
+                      erza.role,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 15.0,
@@ -86,60 +122,7 @@ class _ProfileState extends State<Profile> {
                 flex: 5,
                 child: Container(
                   color: Colors.grey[200],
-                  child: Center(
-                      child: Card(
-                          margin: EdgeInsets.fromLTRB(0.0, 45.0, 0.0, 0.0),
-                          child: Container(
-                              width: 310.0,
-                              height: 290.0,
-                              child: Padding(
-                                padding: EdgeInsets.all(10.0),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Information",
-                                      style: TextStyle(
-                                        fontSize: 17.0,
-                                        fontWeight: FontWeight.w800,
-                                      ),
-                                    ),
-                                    Divider(
-                                      color: Colors.grey[300],
-                                    ),
-                                    InformationItem(
-                                        iconData: Icons.home,
-                                        iconColor: Colors.blue,
-                                        title: "Guild",
-                                        details: "Fairytail, Magnolia"),
-                                    SizedBox(
-                                      height: 20.0,
-                                    ),
-                                    InformationItem(
-                                        iconData: Icons.auto_awesome,
-                                        iconColor: Colors.yellowAccent[400],
-                                        title: "Magic",
-                                        details:
-                                            "Spatial & Sword Magic, Telekinesis"),
-                                    SizedBox(
-                                      height: 20.0,
-                                    ),
-                                    InformationItem(
-                                        iconData: Icons.favorite,
-                                        iconColor: Colors.pinkAccent[400],
-                                        title: "Loves",
-                                        details: "Eating Cakes"),
-                                    SizedBox(
-                                      height: 20.0,
-                                    ),
-                                    InformationItem(
-                                        iconData: Icons.people,
-                                        iconColor: Colors.lightGreen[400],
-                                        title: "Team",
-                                        details: "Team Natsu"),
-                                  ],
-                                ),
-                              )))),
+                  child: Center(child: InformationCardWidget()),
                 ),
               ),
             ],
@@ -148,13 +131,35 @@ class _ProfileState extends State<Profile> {
               top: MediaQuery.of(context).size.height * 0.45,
               left: 20.0,
               right: 20.0,
-              child: UserInformationCard(
+              child: CharacterInformationCard(
                 counter: counter,
-                birthday: "April 7th",
-                age: 19,
+                birthday: erza.birthday,
+                age: erza.age,
               ))
         ],
       ),
     );
   }
 }
+
+final Character erza = Character(
+    image: AssetImage('assets/erza.jpg'),
+    name: "Erza Scarlet",
+    role: "S Class Mage",
+    birthday: "April 7th",
+    age: 19,
+    guild: "Fairytail, Magnolia",
+    magic: "Spatial & Sword Magic, Telekinesis",
+    loves: "eating Cakes",
+    team: "Team Natsu");
+
+final Character lucy = Character(
+    image: AssetImage('assets/lucy.png'),
+    name: "Lucy Heartfilia",
+    role: "Mage",
+    birthday: "July 1st",
+    age: 17,
+    guild: "Fairytail",
+    magic: "Stellar Magic, Star Dress",
+    loves: "eating Sausage",
+    team: "Team Natsu");
