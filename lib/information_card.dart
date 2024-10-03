@@ -4,10 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:miniprofile/information_item.dart';
 import 'package:miniprofile/main.dart';
 
-class InformationCardWidget extends StatelessWidget {
-  const InformationCardWidget({
-    super.key,
+class InformationCard extends StatelessWidget {
+  InformationCard({
+    super.key, required this.guild, required this.magic, required this.loves, required this.team,
+   
   });
+
+  final String guild;
+  final String magic;
+  final String loves;
+  final String team;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +42,7 @@ class InformationCardWidget extends StatelessWidget {
                       iconData: Icons.home,
                       iconColor: Colors.blue,
                       title: "Guild",
-                      details: erza.guild),
+                      details: guild),
                   SizedBox(
                     height: 20.0,
                   ),
@@ -43,7 +50,7 @@ class InformationCardWidget extends StatelessWidget {
                       iconData: Icons.auto_awesome,
                       iconColor: Colors.yellowAccent[400],
                       title: "Magic",
-                      details: erza.magic),
+                      details: magic),
                   SizedBox(
                     height: 20.0,
                   ),
@@ -51,7 +58,7 @@ class InformationCardWidget extends StatelessWidget {
                       iconData: Icons.favorite,
                       iconColor: Colors.pinkAccent[400],
                       title: "Loves",
-                      details: erza.loves),
+                      details: loves),
                   SizedBox(
                     height: 20.0,
                   ),
@@ -59,7 +66,7 @@ class InformationCardWidget extends StatelessWidget {
                       iconData: Icons.people,
                       iconColor: Colors.lightGreen[400],
                       title: "Team",
-                      details: erza.team),
+                      details: team),
                 ],
               ),
             )));

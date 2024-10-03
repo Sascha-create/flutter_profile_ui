@@ -3,14 +3,14 @@
 import 'package:flutter/material.dart';
 
 class CharacterInformationCard extends StatelessWidget {
-  const CharacterInformationCard({
+  CharacterInformationCard({
     super.key,
     required this.counter,
     required this.birthday,
     required this.age,
   });
 
-  final int counter;
+  int counter;
   final String birthday;
   final int age;
 
