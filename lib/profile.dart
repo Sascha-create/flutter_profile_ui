@@ -1,13 +1,17 @@
+//import 'dart:html';
+
 import 'package:flutter/material.dart';
+import 'package:miniprofile/character.dart';
 import 'package:miniprofile/character_information_card.dart';
 import 'package:miniprofile/information_card.dart';
 
-import 'package:miniprofile/main.dart';
 
-class ProfileLucy extends StatelessWidget {
-  const ProfileLucy({
-    super.key,
+class Profile extends StatelessWidget {
+  Profile({
+    super.key, required this.character,
   });
+
+  final Character character;
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +35,13 @@ class ProfileLucy extends StatelessWidget {
                     ),
                     CircleAvatar(
                       radius: 65.0,
-                      backgroundImage: lucy.image,
+                      backgroundImage: character.image,
                       backgroundColor: Colors.white,
                     ),
                     SizedBox(
                       height: 10.0,
                     ),
-                    Text(lucy.name,
+                    Text(character.name,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.0,
@@ -46,7 +50,7 @@ class ProfileLucy extends StatelessWidget {
                       height: 10.0,
                     ),
                     Text(
-                      lucy.role,
+                      character.role,
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 15.0,
@@ -61,10 +65,10 @@ class ProfileLucy extends StatelessWidget {
                   color: Colors.grey[200],
                   child: Center(
                       child: InformationCard(
-                          guild: lucy.guild,
-                          magic: lucy.magic,
-                          loves: lucy.loves,
-                          team: lucy.team)),
+                          guild: character.guild,
+                          magic: character.magic,
+                          loves: character.loves,
+                          team: character.team)),
                 ),
               ),
             ],
@@ -74,9 +78,9 @@ class ProfileLucy extends StatelessWidget {
               left: 20.0,
               right: 20.0,
               child: CharacterInformationCard(
-                counter: 0,
-                birthday: lucy.birthday,
-                age: lucy.age,
+                counter: 0, //counter
+                birthday: character.birthday,
+                age: character.age,
               ))
         ],
       ),

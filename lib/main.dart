@@ -2,9 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:miniprofile/character.dart';
-
-import 'package:miniprofile/profile_erza.dart';
-import 'package:miniprofile/profile_lucy.dart';
+import 'package:miniprofile/profile.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -22,7 +20,8 @@ class AppHome extends StatefulWidget {
 
 class _AppHomeState extends State<AppHome> {
   int currentIndex = 0;
-  List<Widget> profiles = [ProfileErza(), ProfileLucy()];
+
+  List<Character> character = [erza, lucy];
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +41,7 @@ class _AppHomeState extends State<AppHome> {
             NavigationDestination(
                 icon: Icon(Icons.arrow_forward), label: "nächste"),
           ]),
-      body: profiles[currentIndex],
+      body: Profile(character: character[currentIndex]),
     );
   }
 }
