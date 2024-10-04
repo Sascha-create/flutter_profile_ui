@@ -21,7 +21,7 @@ class AppHome extends StatefulWidget {
 class _AppHomeState extends State<AppHome> {
   int currentIndex = 0;
 
-  List<Character> character = [erza, lucy];
+  List<Character> character = [erza, lucy, sascha];
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +36,9 @@ class _AppHomeState extends State<AppHome> {
             setState(() {});
           },
           destinations: const [
-            NavigationDestination(
-                icon: Icon(Icons.arrow_back), label: "zurück"),
-            NavigationDestination(
-                icon: Icon(Icons.arrow_forward), label: "nächste"),
+            NavigationDestination(icon: Icon(Icons.person), label: "Erza"),
+            NavigationDestination(icon: Icon(Icons.person), label: "Lucy"),
+            NavigationDestination(icon: Icon(Icons.person), label: "Sascha"),
           ]),
       body: Profile(character: character[currentIndex]),
     );
@@ -67,3 +66,14 @@ final Character lucy = Character(
     magic: "Stellar Magic, Star Dress",
     loves: "eating Sausage",
     team: "Team Natsu");
+
+final Character sascha = Character(
+    image: AssetImage('assets/sascha.jpeg'),
+    name: "Sascha",
+    role: "Sorcerer's Apprentice",
+    birthday: "April 18th",
+    age: 22,
+    guild: "App Akademie",
+    magic: "Coding Magic",
+    loves: "Dart & Flutter",
+    team: "Batch 7");
